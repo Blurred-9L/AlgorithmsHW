@@ -2,6 +2,7 @@
 
 #include <fstream>
 using std::fstream;
+using std::endl;
 
 #include <ctime>
 using std::time;
@@ -45,6 +46,7 @@ bool FileGenerator::writeAscending( int q ){
     fstream file( "asc.txt", fstream::out );
     
     if( file.is_open() ){
+        file << q << endl;
         for( int i = 1; i <= q; i++ ){
             file << i << " ";
         }
@@ -60,6 +62,7 @@ bool FileGenerator::writeDescending( int q ){
     fstream file( "dsc.txt", fstream::out );
     
     if( file.is_open() ){
+        file << q << endl;
         for( int i = q; i >= 1; i-- ){
             file << i << " ";
         }
@@ -80,6 +83,7 @@ bool FileGenerator::writeRandom( int q ){
         sprintf( filename, "rand%d.txt", i );
         file.open( filename, fstream::out );
         if( file.is_open() ){
+            file << q << endl;
             for( int j = 0; j < q; j++ ){
                 file << rand() << " ";
             }
