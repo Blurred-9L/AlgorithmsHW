@@ -14,6 +14,10 @@ class SortTimer{
         
         void swap( int& x, int& y );
         void bubble( int* array, int n );
+        void insertion( int* array, int n );
+        void selection( int* array, int n );
+        void shell( int* array, int n );
+        void quick( int* array, int izq, int der );
         
     public:
         enum Sort{
