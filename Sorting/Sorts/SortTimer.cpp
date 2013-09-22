@@ -20,7 +20,7 @@ long long SortTimer::assignments() const{
     return assignments_;
 }
 
-double SortTimer::seconds() const{
+long long SortTimer::seconds() const{
     return seconds_;
 }
 
@@ -33,38 +33,39 @@ void SortTimer::getStats( int* array, int n, int sort, bool output ){
     
     switch( sort ){
         case Bubble:
-            timerStart_ = clock();
+            gettimeofday( &timerStart_, NULL );
             bubble( array, n );
-            timerEnd_ = clock();
+            gettimeofday( &timerEnd_, NULL );
             break;
         case Insertion:
-            timerStart_ = clock();
+            gettimeofday( &timerStart_, NULL );
             insertion( array, n );
-            timerEnd_ = clock();
+            gettimeofday( &timerEnd_, NULL );
             break;
         case Selection:
-            timerStart_ = clock();
+            gettimeofday( &timerStart_, NULL );
             selection( array, n );
-            timerEnd_ = clock();
+            gettimeofday( &timerEnd_, NULL );
             break;
         case Shell:
-            timerStart_ = clock();
+            gettimeofday( &timerStart_, NULL );
             shell( array, n );
-            timerEnd_ = clock();
+            gettimeofday( &timerEnd_, NULL );
             break;
         case Quick:
-            timerStart_ = clock();
+            gettimeofday( &timerStart_, NULL );
             quick( array, 0, n - 1 );
-            timerEnd_ = clock();
+            gettimeofday( &timerEnd_, NULL );
             break;
     }
-    seconds_ = (double)( timerEnd_ - timerStart_ ) / CLOCKS_PER_SEC;
+    seconds_ = ( timerEnd_.tv_sec * 1000000 + timerEnd_.tv_usec ) -
+               ( timerStart_.tv_sec * 1000000 + timerStart_.tv_usec );
     
     if( output ){
         cout << "No. Elements: " << n << endl
              << "Comparisons: " << comparisons_ << endl
              << "Assignments: " << assignments_ << endl
-             << "Time: " << seconds_ << " seconds" << endl;
+             << "Time: " << seconds_ << " microseconds" << endl;
         /*for( int i = 0; i < n; i++ ){
             cout << array[i] << " ";
         }

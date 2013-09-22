@@ -1,16 +1,15 @@
 #ifndef SORT_TIMER_H
 #define SORT_TIMER_H
 
-#include <ctime>
-using std::clock_t;
+#include <sys/time.h>
 
 class SortTimer{
     private:
         long long comparisons_;
         long long assignments_;
-        clock_t timerStart_;
-        clock_t timerEnd_;
-        double seconds_;
+        struct timeval timerStart_;
+        struct timeval timerEnd_;
+        long long seconds_;
         
         void swap( int& x, int& y );
         void bubble( int* array, int n );
@@ -32,7 +31,7 @@ class SortTimer{
         ~SortTimer();
         long long comparisons() const;
         long long assignments() const;
-        double seconds() const;
+        long long seconds() const;
         void getStats( int* array, int n, int sort, bool output = true );
         void reset();
 };

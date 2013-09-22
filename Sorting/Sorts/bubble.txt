@@ -1,0 +1,431 @@
+../Files/sorting0_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 10
+Time: 2 microseconds
+
+../Files/sorting1_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 8
+Time: 2 microseconds
+
+../Files/sorting2_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 8
+Time: 1 microseconds
+
+../Files/sorting3_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 8
+Time: 2 microseconds
+
+../Files/sorting4_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 10
+Time: 2 microseconds
+
+../Files/sorting5_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 10
+Time: 2 microseconds
+
+../Files/sorting6_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 6
+Time: 1 microseconds
+
+../Files/sorting7_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 16
+Time: 2 microseconds
+
+../Files/sorting8_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 4
+Time: 1 microseconds
+
+../Files/sorting9_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 18
+Time: 2 microseconds
+
+../Files/sorting10_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 0
+Time: 1 microseconds
+
+../Files/sorting11_5.txt
+No. Elements: 5
+Comparisons: 20
+Assignments: 20
+Time: 1 microseconds
+
+../Files/sorting0_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 48
+Time: 4 microseconds
+
+../Files/sorting1_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 52
+Time: 4 microseconds
+
+../Files/sorting2_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 34
+Time: 4 microseconds
+
+../Files/sorting3_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 60
+Time: 4 microseconds
+
+../Files/sorting4_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 48
+Time: 4 microseconds
+
+../Files/sorting5_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 42
+Time: 4 microseconds
+
+../Files/sorting6_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 28
+Time: 4 microseconds
+
+../Files/sorting7_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 48
+Time: 3 microseconds
+
+../Files/sorting8_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 32
+Time: 3 microseconds
+
+../Files/sorting9_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 40
+Time: 3 microseconds
+
+../Files/sorting10_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 0
+Time: 3 microseconds
+
+../Files/sorting11_10.txt
+No. Elements: 10
+Comparisons: 90
+Assignments: 90
+Time: 4 microseconds
+
+../Files/sorting0_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 4552
+Time: 186 microseconds
+
+../Files/sorting1_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 4086
+Time: 188 microseconds
+
+../Files/sorting2_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 5076
+Time: 218 microseconds
+
+../Files/sorting3_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 4840
+Time: 193 microseconds
+
+../Files/sorting4_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 5144
+Time: 198 microseconds
+
+../Files/sorting5_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 4988
+Time: 206 microseconds
+
+../Files/sorting6_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 5360
+Time: 200 microseconds
+
+../Files/sorting7_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 4972
+Time: 196 microseconds
+
+../Files/sorting8_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 5076
+Time: 205 microseconds
+
+../Files/sorting9_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 4278
+Time: 185 microseconds
+
+../Files/sorting10_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 0
+Time: 112 microseconds
+
+../Files/sorting11_100.txt
+No. Elements: 100
+Comparisons: 9900
+Assignments: 9900
+Time: 215 microseconds
+
+../Files/sorting0_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 475196
+Time: 12373 microseconds
+
+../Files/sorting1_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 471268
+Time: 11624 microseconds
+
+../Files/sorting2_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 484686
+Time: 11617 microseconds
+
+../Files/sorting3_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 487482
+Time: 11640 microseconds
+
+../Files/sorting4_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 478140
+Time: 11569 microseconds
+
+../Files/sorting5_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 478266
+Time: 11600 microseconds
+
+../Files/sorting6_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 472360
+Time: 11504 microseconds
+
+../Files/sorting7_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 458898
+Time: 11488 microseconds
+
+../Files/sorting8_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 482170
+Time: 11578 microseconds
+
+../Files/sorting9_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 482054
+Time: 11688 microseconds
+
+../Files/sorting10_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 0
+Time: 6615 microseconds
+
+../Files/sorting11_1000.txt
+No. Elements: 1000
+Comparisons: 999000
+Assignments: 999000
+Time: 12588 microseconds
+
+../Files/sorting0_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 47994328
+Time: 1154035 microseconds
+
+../Files/sorting1_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 47923854
+Time: 1154698 microseconds
+
+../Files/sorting2_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 47917918
+Time: 1150427 microseconds
+
+../Files/sorting3_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 48455298
+Time: 1157063 microseconds
+
+../Files/sorting4_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 48243488
+Time: 1152437 microseconds
+
+../Files/sorting5_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 47813596
+Time: 1154612 microseconds
+
+../Files/sorting6_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 47842138
+Time: 1160993 microseconds
+
+../Files/sorting7_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 48066356
+Time: 1154089 microseconds
+
+../Files/sorting8_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 48057472
+Time: 1153793 microseconds
+
+../Files/sorting9_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 48336338
+Time: 1156082 microseconds
+
+../Files/sorting10_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 0
+Time: 674236 microseconds
+
+../Files/sorting11_10000.txt
+No. Elements: 10000
+Comparisons: 99990000
+Assignments: 99990000
+Time: 1260184 microseconds
+
+../Files/sorting0_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 4809288870
+Time: 133080999 microseconds
+
+../Files/sorting1_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 4786428070
+Time: 134087619 microseconds
+
+../Files/sorting2_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 4799337184
+Time: 139404492 microseconds
+
+../Files/sorting3_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 4805942882
+Time: 146220956 microseconds
+
+../Files/sorting4_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 4818962368
+Time: 146828279 microseconds
+
+../Files/sorting5_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 4829089614
+Time: 148041454 microseconds
+
+../Files/sorting6_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 4816094610
+Time: 133686970 microseconds
+
+../Files/sorting7_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 4802090206
+Time: 139193942 microseconds
+
+../Files/sorting8_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 4827576536
+Time: 141216861 microseconds
+
+../Files/sorting9_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 4800239014
+Time: 152602517 microseconds
+
+../Files/sorting10_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 0
+Time: 87899623 microseconds
+
+../Files/sorting11_100000.txt
+No. Elements: 100000
+Comparisons: 9999900000
+Assignments: 9999900000
+Time: 154874676 microseconds
