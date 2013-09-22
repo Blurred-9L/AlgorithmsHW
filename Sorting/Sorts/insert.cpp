@@ -30,7 +30,7 @@ int main(){
                     file >> array[k];
                 }
                 cout << filename << endl;
-                s.getStats( array, quantities[i], SortTimer::Bubble );
+                s.getStats( array, quantities[i], SortTimer::Insertion );
                 cout << endl;
                 file.close();
             }

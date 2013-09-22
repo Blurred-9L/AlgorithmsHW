@@ -39,6 +39,7 @@ void SortTimer::getStats( int* array, int n, int sort, bool output ){
             break;
         case Insertion:
             timerStart_ = clock();
+            insertion( array, n );
             timerEnd_ = clock();
             break;
         case Selection:
@@ -73,4 +74,35 @@ void SortTimer::swap( int& x, int& y ){
     
     x = y;
     y = z;
+}
+
+void SortTimer::bubble( int* array, int n ){
+    int i, j;
+    
+    for( i = 0; i < n; i++ ){
+        for( j = 0; j < n - 1; j++ ){
+            if( array[j] > array[j + 1] ){
+                swap( array[j], array[j + 1] );
+                assignments_ += 2;
+            }
+            comparisons_ += 1;
+        }
+    }
+}
+
+void SortTimer::insertion( int* array, int n ){
+    int i, j, aux;
+    
+    for( i = 1; i < n; i++ ){
+        j = i;
+        aux = array[i];
+        comparisons_++;
+        while( j > 0 && aux < array[j - 1] ){
+            array[j] = array[j - 1];
+            assignments_++;
+            j--;
+        }
+        array[j] = aux;
+        assignments_++;
+    }
 }
