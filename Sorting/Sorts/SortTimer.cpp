@@ -44,14 +44,17 @@ void SortTimer::getStats( int* array, int n, int sort, bool output ){
             break;
         case Selection:
             timerStart_ = clock();
+            selection( array, n );
             timerEnd_ = clock();
             break;
         case Shell:
             timerStart_ = clock();
+            shell( array, n );
             timerEnd_ = clock();
             break;
         case Quick:
             timerStart_ = clock();
+            quick( array, 0, n - 1 );
             timerEnd_ = clock();
             break;
     }
@@ -96,13 +99,85 @@ void SortTimer::insertion( int* array, int n ){
     for( i = 1; i < n; i++ ){
         j = i;
         aux = array[i];
-        comparisons_++;
         while( j > 0 && aux < array[j - 1] ){
+            comparisons_++;
             array[j] = array[j - 1];
             assignments_++;
             j--;
         }
+        comparisons_++;
         array[j] = aux;
         assignments_++;
+    }
+}
+
+void SortTimer::selection( int* array, int n ){
+    int i, j, menor;
+    
+    for( i = 0; i < n - 1; i++ ){
+        menor = i;
+        for( j = i + 1; j < n; j++ ){
+            comparisons_++;
+            if( array[j] < array[menor] ){
+                menor = j;
+            }
+        }
+        swap( array[i], array[menor] );
+        assignments_ += 2;
+    }
+}
+
+void SortTimer::shell( int* array, int n ){
+    int i, j, aux, salto;
+    
+    salto = n / 2;
+    while( salto > 0 ){
+        for( i = salto; i < n; i++ ){
+            j = i;
+            aux = array[i];
+            while( j >= salto && aux < array[j - salto] ){
+                comparisons_++;
+                array[j] = array[j - salto];
+                assignments_++;
+                j -= salto;
+            }
+            comparisons_++;
+            array[j] = aux;
+            assignments_++;
+        }
+        salto /= 2;
+    }
+}
+
+void SortTimer::quick( int* array, int izq, int der ){
+    int i, j, pivote;
+    
+    i = izq;
+    j = der;
+    pivote = array[( izq + der ) / 2];
+    while( i <= j ){
+        comparisons_++;
+        while( array[i] < pivote ){
+            comparisons_++;
+            i++;
+        }
+        comparisons_++;
+        while( array[j] > pivote ){
+            comparisons_++;
+            j--;
+        }
+        if( i <= j ){
+            swap( array[i], array[j] );
+            assignments_ += 2;
+            i++;
+            j--;
+        }
+    }
+    
+    if( izq < j ){
+        quick( array, izq, j );
+    }
+    if( i < der ){
+        quick( array, i, der );
     }
 }
