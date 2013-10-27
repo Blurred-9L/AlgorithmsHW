@@ -348,6 +348,8 @@ class Digraph{
                 delete nodes[i];
             }
             nodes.clear();
+            eraseAllEdges();
+            edges.clear();
         }
         
         void widthFirstSearch( int startIndex, vector<int>& order ) const{
