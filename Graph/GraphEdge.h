@@ -17,6 +17,12 @@ class GraphEdge{
             weight_( weight ){
         }
         
+        GraphEdge( GraphEdge<Tag>& e ) :
+            tag_( e.tag() ),
+            from_( e.from() ),
+            to_( e.to() ),
+            weight_( e.weight() ){}
+        
         ~GraphEdge(){
         }
         

@@ -24,7 +24,7 @@ using std::endl;
 
 template <class Node, class Edge>
 class Digraph{
-    private:
+    protected:
         vector< GraphNode<Node>* > nodes;
         vector< vector< GraphEdge<Edge>* > > edges;
         
@@ -35,6 +35,7 @@ class Digraph{
         ~Digraph(){
             eraseNodes();
             eraseAllEdges();
+            edges.clear();
         }
         
         int** getAdjMatrix() const{
@@ -132,6 +133,7 @@ class Digraph{
             node = getNodeByIndex( index );
             if( node != 0 ){
                 delete node;
+                eraseRefs( index );
                 nodes.erase( nodes.begin() + index );
                 eraseEdges( index );
                 edges.erase( edges.begin() + index );
@@ -151,6 +153,7 @@ class Digraph{
                 if( data == nodes[i] -> tag() ){
                     node = nodes[i];
                     delete node;
+                    eraseRefs( i );
                     nodes.erase( nodes.begin() + i );
                     eraseEdges( i );
                     edges.erase( edges.begin() + i );
@@ -159,6 +162,33 @@ class Digraph{
             }
             
             return erased;
+        }
+        
+        void eraseRefs( int index ){
+            int i, j;
+            int size = nodes.size();
+            int inSize;
+            int from, to;
+            queue<int> toErase;
+            
+            for( i = 0; i < size; i++ ){
+                inSize = edges[i].size();
+                for( j = 0; j < inSize; j++ ){
+                    if( edges[i][j] -> to() == index ){
+                        toErase.push( i );
+                        toErase.push( j );
+                        delete edges[i][j];
+                    }
+                }
+            }
+            
+            while( not toErase.empty() ){
+                from = toErase.front();
+                toErase.pop();
+                to = toErase.front();
+                toErase.pop();
+                edges[from].erase( edges[from].begin() + to );
+            }
         }
         
         bool addEdge( const Edge& data, int from, int to, int weight = 1 ){
@@ -230,6 +260,25 @@ class Digraph{
             return index;
         }
         
+        GraphEdge<Edge>* getEdgeByIndex( int from, int to ){
+            GraphEdge<Edge>* edge = 0;
+            int i;
+            int size;
+            bool found = false;
+            
+            if( from >= 0 and from < nodes.size() and to >= 0 and to < nodes.size() ){
+                size = edges[from].size();
+                for( i = 0; i < size and not found; i++ ){
+                    if( to == edges[from][i] -> to() ){
+                        found = true;
+                        edge = edges[from][i];
+                    }
+                }
+            }
+            
+            return edge;
+        }
+        
         bool eraseEdgeByIndex( int from, int to ){
             GraphEdge<Edge>* edge;
             int i;
@@ -289,7 +338,6 @@ class Digraph{
             for( i = 0; i < size; i++ ){
                 eraseEdges( i );
             }
-            edges.clear();
         }
         
         void eraseNodes(){
