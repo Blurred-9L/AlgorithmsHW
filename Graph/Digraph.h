@@ -13,9 +13,14 @@ using std::queue;
 #include <stack>
 using std::stack;
 
+#include <set>
+using std::set;
+
 #include <iostream>
 using std::cout;
 using std::endl;
+
+#include <climits>
 
 template <class Node, class Edge>
 class Digraph{
@@ -30,6 +35,38 @@ class Digraph{
         ~Digraph(){
             eraseNodes();
             eraseAllEdges();
+        }
+        
+        int** getAdjMatrix() const{
+            int** matrix;
+            int i, j;
+            int to;
+            int size = nodes.size();
+            int inSize;
+            
+            matrix = new int*[size];
+            for( i = 0; i < size; i++ ){
+                matrix[i] = new int[size];
+                for( j = 0; j < size; j++ ){
+                    if( i != j ){
+                        matrix[i][j] = INT_MAX;
+                    }
+                    else{
+                        matrix[i][j] = 0;
+                    }
+                }
+                inSize = edges[i].size();
+                for( j = 0; j < inSize; j++ ){
+                    to = edges[i][j] -> to();
+                    matrix[i][to] = edges[i][j] -> weight();
+                }
+            }
+            
+            return matrix;
+        }
+        
+        int getNumNodes() const{
+            return nodes.size();
         }
         
         bool addNode( const Node& data ){
@@ -265,7 +302,7 @@ class Digraph{
             nodes.clear();
         }
         
-        void widthFirstSearch( int startIndex, vector<int>& order ){
+        void widthFirstSearch( int startIndex, vector<int>& order ) const{
             int size = nodes.size();
             int curNode;
             int i;
@@ -294,7 +331,7 @@ class Digraph{
             delete[] visited;
         }
         
-        void depthFirstSearch( int startIndex, vector<int>& order ){
+        void depthFirstSearch( int startIndex, vector<int>& order ) const{
             int size = nodes.size();
             int curNode;
             int i;
@@ -321,6 +358,73 @@ class Digraph{
             }
             
             delete[] visited;
+        }
+        
+        unsigned* dijkstra( int startIndex ) const{
+            int size = nodes.size();
+            int i, min;
+            int minIdx;
+            int** matrix = getAdjMatrix();
+            unsigned* distances = new unsigned[size];
+            int* lastNode = new int[size];
+            set<int> nodeSet;
+            
+            for( i = 0; i < size; i++ ){
+                if( i != startIndex ){
+                    distances[i] = matrix[startIndex][i];
+                    lastNode[i] = startIndex;
+                    nodeSet.insert( i );
+                }
+                else{
+                    distances[i] = 0;
+                    lastNode[i] = -1;
+                }
+            }
+            
+            for( i = 0; i < size - 1; i++ ){
+                min = UINT_MAX;
+                for( set<int>::iterator j = nodeSet.begin(); j != nodeSet.end(); j++ ){
+                    if( distances[*j] < min ){
+                        min = distances[*j];
+                        minIdx = *j;
+                    }
+                }
+                nodeSet.erase( nodeSet.find( minIdx ) );
+                for( set<int>::iterator j = nodeSet.begin(); j != nodeSet.end(); j++ ){
+                    if( distances[*j] > distances[minIdx] + matrix[minIdx][*j] ){
+                        distances[*j] = distances[minIdx] + matrix[minIdx][*j];
+                        lastNode[*j] = minIdx;
+                    }
+                }
+            }
+            
+            for( i = 0; i < size; i++ ){
+                delete[] matrix[i];
+            }
+            delete[] matrix;
+            delete[] lastNode;
+            
+            return distances;
+        }
+        
+        int** floyd(){
+            int** matrix = getAdjMatrix();
+            int size = nodes.size();
+            int i, j, k;
+            
+            for( k = 0; k < size; k++ ){
+                for( i = 0; i < size; i++ ){
+                    for( j = 0; j < size; j++ ){
+                        if( matrix[i][k] != INT_MAX && matrix[k][j] != INT_MAX ){
+                            if( matrix[i][k] + matrix[k][j] < matrix[i][j] ){
+                                matrix[i][j] = matrix[i][k] + matrix[k][j];
+                            }
+                        }
+                    }
+                }
+            }
+            
+            return matrix;
         }
 };
 
