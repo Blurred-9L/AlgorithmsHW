@@ -26,6 +26,10 @@ class GraphEdge{
         ~GraphEdge(){
         }
         
+        bool operator<( GraphEdge<Tag>& e ){
+            return weight_ < e.weight();
+        }
+        
         Tag& tag(){
             return tag_;
         }
