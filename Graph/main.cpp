@@ -179,6 +179,8 @@ void testGraph(){
     GraphEdge<int>** prims;
     GraphEdge<int>** kruskals;
     
+    cout << "Testing Graph..." << endl;
+    
     g.addNode( 1 );
     g.addNode( 2 );
     g.addNode( 3 );
@@ -377,7 +379,7 @@ void testGraph(){
 }
 
 int main(){
-    //testDigraph();
+    testDigraph();
     testGraph();
     
     return 0;

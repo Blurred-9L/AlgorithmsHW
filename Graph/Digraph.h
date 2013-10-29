@@ -1,3 +1,10 @@
+/** \file
+    Header file for the Digraph class.
+    
+    Rodrigo Fuentes Hernandez
+    aka Blurred-9L
+*/
+
 #ifndef DIGRAPH_H
 #define DIGRAPH_H
 
@@ -22,22 +29,38 @@ using std::endl;
 
 #include <climits>
 
+/** The Digraph class provides a template class
+    for the representation of a graph whose edges
+    have a direction. The template parameters
+    received allow the user to identify both, nodes
+    and edges, with a tag of the given template
+    parameter.
+    The Digraph class provides basic implementations
+    for Dijkstra's and Floyd's algorithms, as well
+    as a method to obtain's the graph's representation
+    as an adjacency matrix.
+*/
 template <class Node, class Edge>
 class Digraph{
     protected:
-        vector< GraphNode<Node>* > nodes;
-        vector< vector< GraphEdge<Edge>* > > edges;
+        vector< GraphNode<Node>* > nodes;                   ///< Graph's nodes.
+        vector< vector< GraphEdge<Edge>* > > edges;         ///< Graph's edges.
         
     public:
+        /// Class constructor.
         Digraph(){
         }
         
+        /// Destructor.
         ~Digraph(){
             eraseNodes();
             eraseAllEdges();
             edges.clear();
         }
         
+        /** Gets the adjacency matrix representation
+            of the graph.
+        */
         int** getAdjMatrix() const{
             int** matrix;
             int i, j;
@@ -66,10 +89,12 @@ class Digraph{
             return matrix;
         }
         
+        /// Gets the number of nodes in the graph.
         int getNumNodes() const{
             return nodes.size();
         }
         
+        /// Adds a new node to the graph.
         bool addNode( const Node& data ){
             bool added = false;
             GraphNode<Node>* newNode;
@@ -84,6 +109,7 @@ class Digraph{
             return added;
         }
         
+        /// Gets a node's index on the graph.
         int getIndex( const Node& data ) const{
             int index = -1;
             int i;
@@ -100,6 +126,7 @@ class Digraph{
             return index;
         }
         
+        /// Gets a node by specifying its index.
         GraphNode<Node>* getNodeByIndex( int index ) const{
             GraphNode<Node>* node = 0;
             
@@ -110,6 +137,7 @@ class Digraph{
             return node;
         }
         
+        /// Gets a node by specifying its tag data.
         GraphNode<Node>* getNode( const Node& data ) const{
             GraphNode<Node>* node = 0;
             int i;
@@ -126,6 +154,7 @@ class Digraph{
             return node;
         }
         
+        /// Erases a node by specifying its index.
         bool eraseNodeByIndex( int index ){
             GraphNode<Node>* node;
             bool erased = false;
@@ -143,6 +172,7 @@ class Digraph{
             return erased;
         }
         
+        /// Erases a node by specifying its tag data.
         bool eraseNode( const Node& data ){
             GraphNode<Node>* node;
             bool erased = false;
@@ -164,6 +194,9 @@ class Digraph{
             return erased;
         }
         
+        /** Erases all edges whose 'to' attribute is
+            the same as the given index.
+        */ 
         void eraseRefs( int index ){
             int i, j;
             int size = nodes.size();
@@ -191,6 +224,7 @@ class Digraph{
             }
         }
         
+        /// Adds an edge to the graph.
         bool addEdge( const Edge& data, int from, int to, int weight = 1 ){
             GraphEdge<Edge>* newEdge;
             int i;
@@ -215,6 +249,9 @@ class Digraph{
             return added;
         }
         
+        /** Gets all edges that start on the node with the
+            given index.
+        */
         vector< GraphEdge<Edge>* >* getEdgesByIndex( int index ){
             vector< GraphEdge<Edge>* >* nodeEdges = 0;
             
@@ -225,6 +262,9 @@ class Digraph{
             return nodeEdges;
         }
         
+        /** Gets all edges that start on the node with the
+            given tag data.
+        */
         vector< GraphEdge<Edge>* >* getEdges( const Node& data ){
             vector< GraphEdge<Edge>* >* nodeEdges = 0;
             int i;
@@ -241,6 +281,9 @@ class Digraph{
             return nodeEdges;
         }
         
+        /** Gets a specific edge by matching against its tag
+            data and its starting node index.
+        */
         int getEdgeIndex( const Edge& data, int from ){
             int index = -1;
             int i;
@@ -260,6 +303,9 @@ class Digraph{
             return index;
         }
         
+        /** Gets a specific edge by matching its source and
+            destination nodes' indexes.
+        */
         GraphEdge<Edge>* getEdgeByIndex( int from, int to ){
             GraphEdge<Edge>* edge = 0;
             int i;
@@ -279,6 +325,8 @@ class Digraph{
             return edge;
         }
         
+        /** Erases a node by matching its source and destination
+            nodes' indexes.*/
         bool eraseEdgeByIndex( int from, int to ){
             GraphEdge<Edge>* edge;
             int i;
@@ -300,6 +348,9 @@ class Digraph{
             return erased;
         }
         
+        /** Erases a node by matching its tag data and its
+            starting node index.
+        */
         bool eraseEdge( const Edge& data, int from ){
             GraphEdge<Edge>* edge;
             int i;
@@ -321,6 +372,9 @@ class Digraph{
             return erased;
         }
         
+        /** Erases all edges of the node with the given
+            index.
+        */
         void eraseEdges( int index ){
             int i;
             int size = edges[index].size();
@@ -331,6 +385,7 @@ class Digraph{
             edges[index].clear();
         }
         
+        /// Erases all the graph's edges.
         void eraseAllEdges(){
             int i;
             int size = edges.size();
@@ -340,6 +395,7 @@ class Digraph{
             }
         }
         
+        /// Erases all the graph's nodes.
         void eraseNodes(){
             int i;
             int size = nodes.size();
@@ -352,6 +408,10 @@ class Digraph{
             edges.clear();
         }
         
+        /** Stores the order on which the graph's nodes should
+            be visited if a width/breadth first search was
+            performed.
+        */
         void widthFirstSearch( int startIndex, vector<int>& order ) const{
             int size = nodes.size();
             int curNode;
@@ -381,6 +441,9 @@ class Digraph{
             delete[] visited;
         }
         
+        /** Stores the order on which the graph's nodes should
+            be visited if a depth first search was performed.
+        */
         void depthFirstSearch( int startIndex, vector<int>& order ) const{
             int size = nodes.size();
             int curNode;
@@ -410,6 +473,9 @@ class Digraph{
             delete[] visited;
         }
         
+        /** Dijkstra's algorithm for finding the shortest
+            path between one node and all others.
+        */
         unsigned* dijkstra( int startIndex ) const{
             int size = nodes.size();
             int i, min;
@@ -457,6 +523,9 @@ class Digraph{
             return distances;
         }
         
+        /** Floyd's algorithm for finding the shortest path
+            for all vertexes in a graph.
+        */
         int** floyd(){
             int** matrix = getAdjMatrix();
             int size = nodes.size();
