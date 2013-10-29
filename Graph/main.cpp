@@ -177,6 +177,7 @@ void testGraph(){
     int** matrix;
     unsigned* distances;
     GraphEdge<int>** prims;
+    GraphEdge<int>** kruskals;
     
     g.addNode( 1 );
     g.addNode( 2 );
@@ -317,6 +318,46 @@ void testGraph(){
     delete[] prims;
     
     cout << "Prim matrix:" << endl;
+    size = g.getNumNodes();
+    matrix = g.getAdjMatrix();
+    for( i = 0; i < size; i++ ){
+        for( j = 0; j < size; j++ ){
+            cout.width( 5 );
+            if( matrix[i][j] != INT_MAX ){
+                cout << matrix[i][j];
+            }
+            else{
+                cout << 'x';
+            }
+        }
+        delete[] matrix[i];
+        cout << endl;
+    }
+    delete[] matrix;
+    
+    g.eraseAllEdges();
+    
+    cout << g.addEdge( 12, g.getIndex( 1 ), g.getIndex( 2 ), 20 ) << endl;
+    cout << g.addEdge( 15, g.getIndex( 1 ), g.getIndex( 5 ), 10 ) << endl;
+    cout << g.addEdge( 23, g.getIndex( 2 ), g.getIndex( 3 ), 20 ) << endl;
+    cout << g.addEdge( 25, g.getIndex( 2 ), g.getIndex( 5 ), 15 ) << endl;
+    cout << g.addEdge( 34, g.getIndex( 3 ), g.getIndex( 4 ), 5 ) << endl;
+    cout << g.addEdge( 35, g.getIndex( 3 ), g.getIndex( 5 ), 10 ) << endl;
+    cout << g.addEdge( 54, g.getIndex( 5 ), g.getIndex( 4 ), 15 ) << endl;
+    
+    cout << "Kruskal..." << endl;
+    kruskals = g.kruskal();
+    
+    g.eraseAllEdges();
+    cout << "Changing graph to Kruskal's result..." << endl;
+    for( i = 0; i < size - 1; i++ ){
+        g.addEdge( kruskals[i] -> tag(), kruskals[i] -> from(), kruskals[i] -> to(), kruskals[i] -> weight() );
+        cout << kruskals[i] -> from() << ", " << kruskals[i] -> to() << endl;
+        delete kruskals[i];
+    }
+    delete[] kruskals;
+    
+    cout << "Kruskal matrix:" << endl;
     size = g.getNumNodes();
     matrix = g.getAdjMatrix();
     for( i = 0; i < size; i++ ){

@@ -118,14 +118,14 @@ class Graph : public Digraph<Node, Edge>{
             int count = 0;
             int fromIdx, toIdx;
             int* partitions = new int[size];
-            set< GraphEdge<Edge>* > graphEdges;
-            set< GraphEdge<Edge>* >::iterator curEdge;
+            set< GraphEdge<Edge> > graphEdges;
+            typename set< GraphEdge<Edge> >::iterator curEdge;
             GraphEdge<Edge>** edges = new GraphEdge<Edge>*[size - 1];
             
             for( i = 0; i < size; i++ ){
                 inSize = this -> edges[i].size();
                 for( j = 0; j < inSize; j++ ){
-                    graphEdges.insert( this -> edges[i][j] );
+                    graphEdges.insert( *( this -> edges[i][j] ) );
                 }
             }
             for( i = 0; i < size - 1; i++ ){
@@ -136,13 +136,14 @@ class Graph : public Digraph<Node, Edge>{
             }
             
             curEdge = graphEdges.begin();
-            while( count < size - 1 ){
-                fromIdx = findPartition( (**curEdge).from(), partitions );
-                toIdx = findPartition( (**curEdge).from(), partitions );
+            while( count < size - 1 and curEdge != graphEdges.end() ){
+                fromIdx = findPartition( (*curEdge).from(), partitions );
+                toIdx = findPartition( (*curEdge).to(), partitions );
                 if( fromIdx != toIdx ){
                     mergePartitions( fromIdx, toIdx, partitions );
-                    edges[count++] = new GraphEdge<Edge>( **curEdge );
+                    edges[count++] = new GraphEdge<Edge>( *curEdge );
                 }
+                curEdge++;
             }
             
             delete[] partitions;

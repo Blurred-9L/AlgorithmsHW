@@ -17,20 +17,45 @@ class GraphEdge{
             weight_( weight ){
         }
         
-        GraphEdge( GraphEdge<Tag>& e ) :
+        GraphEdge( const GraphEdge<Tag>& e ) :
             tag_( e.tag() ),
             from_( e.from() ),
             to_( e.to() ),
-            weight_( e.weight() ){}
+            weight_( e.weight() ){
+        }
         
         ~GraphEdge(){
         }
         
-        bool operator<( GraphEdge<Tag>& e ){
-            return weight_ < e.weight();
+        bool operator<( const GraphEdge<Tag>& e ) const{
+            bool result;
+            
+            if( weight_ > e.weight() ){
+                result = false;
+            }
+            else if( weight_ < e.weight() ){
+                result = true;
+            }
+            else if( from_ < e.from() ){
+                result = true;
+            }
+            else if( from_ > e.from() ){
+                result = false;
+            }
+            else if( to_ > e.to() ){
+                result = false;
+            }
+            else if( to_ < e.to() ){
+                result = true;
+            }
+            else{
+                result = false;
+            }
+            
+            return result;
         }
         
-        Tag& tag(){
+        const Tag& tag() const{
             return tag_;
         }
         
